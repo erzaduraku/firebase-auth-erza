@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Firebase Authentication</title>
+  <script type="module" src="app.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+    }
+
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #4a2b33;
+      background: linear-gradient(-45deg, #ffd1dc, #fbc2eb, #f8cdda, #ffe6f0);
+      background-size: 400% 400%;
+      animation: gradientMove 8s ease infinite;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(12px);
+      padding: 50px 60px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(255, 182, 193, 0.35);
+      animation: fadeInUp 1s ease both;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .container:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 35px rgba(255, 182, 193, 0.45);
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 35px;
+      color: #5a3241;
+      letter-spacing: 0.8px;
+    }
+
+    button {
+      background: linear-gradient(90deg, #ffb6c1, #ff80ab);
+      color: #fff;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    
+    button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, rgba(255,255,255,0.4), rgba(255,255,255,0));
+      transition: all 0.5s ease;
+    }
+
+    button:hover::before {
+      left: 100%;
+    }
+
+    button:hover {
+      transform: scale(1.07);
+      box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+    }
+
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+      100% { transform: scale(1); }
+    }
+
+    button {
+      animation: pulse 2.5s infinite ease-in-out;
+    }
+
+.popup {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%) translateY(50px);
+  background: rgba(255, 255, 255, 0.85);
+  color: #5a3241;
+  padding: 14px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(255, 182, 193, 0.4);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  opacity: 0;
+  transition: all 0.5s ease;
+  z-index: 999;
+}
+
+.popup.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.popup.error {
+  background: rgba(255, 120, 120, 0.9);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(255, 80, 80, 0.5);
+}
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Firebase Authentication Demo</h1>
+    <button id="googleLogin">Sign in with Google</button>
+  </div>
+</body>
+</html>
+
